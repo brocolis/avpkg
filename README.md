@@ -45,14 +45,14 @@ fpm build
 ```
 ### OPTIONS
 ```text
- **SEARCH MODE:**
+ SEARCH MODE:
     SEARCH_STRING  A regular expression used to match package descriptions.
                    It is case-insensitive. The default is ".", causing all
                    registered packages to be displayed.
     --verbose,-V   give more-detailed information about the packages matching
                    SEARCH_STRING.
 
- **TOML ENTRY MODE:**
+ TOML ENTRY MODE:
     --toml,-T      instead of an fpm project description generate the line
                    needed to be added to the "fpm.toml" file in order to use
                    the specified external package in your fpm project.
@@ -62,12 +62,11 @@ fpm build
     TAG            A git(1) tag name can optionally follow the PACKAGE_NAME
                    when using the --toml switch.
 ```
- **DOCUMENTATION:**
+### DOCUMENTATION:
 ```text
     --help,-h      display this help and exit
     --version,-v   output version information and exit
 ```
-
 ### EXAMPLE
  Sample commands:
 ```bash
