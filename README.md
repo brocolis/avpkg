@@ -27,16 +27,58 @@ fpm build
 ```
 
 ## Usage
-```bash
-avpkg search package
-avpkg info package
+
+### NAME
+   avpkg(1) - display available FPM packages
+### SYNOPSIS
+   syntax:
+```text
+    avpkg SEARCH_STRING(s) [--verbose]
+     or
+    avpkg --toml PACKAGE_NAME [TAG]
+```
+### DESCRIPTION
+   Search for and display information describing fpm (Fortran Package Manager)
+   packages registered in the fpm repository at
+```text
+      https://github.com/fortran-lang/fpm-registry
+```
+### OPTIONS
+```text
+ **SEARCH MODE:**
+    SEARCH_STRING  A regular expression used to match package descriptions.
+                   It is case-insensitive. The default is ".", causing all
+                   registered packages to be displayed.
+    --verbose,-V   give more-detailed information about the packages matching
+                   SEARCH_STRING.
+
+ **TOML ENTRY MODE:**
+    --toml,-T      instead of an fpm project description generate the line
+                   needed to be added to the "fpm.toml" file in order to use
+                   the specified external package in your fpm project.
+    PACKAGE_NAME   when the --toml switch is supplied a string is required that
+                   in NOT treated as a Regular Expression but as a specific
+                   case-sensitive fpm package name.
+    TAG            A git(1) tag name can optionally follow the PACKAGE_NAME
+                   when using the --toml switch.
+```
+ **DOCUMENTATION:**
+```text
+    --help,-h      display this help and exit
+    --version,-v   output version information and exit
 ```
 
-## Examples
+### EXAMPLE
+ Sample commands:
 ```bash
-avpkg search lapack
-avpkg search "thermodynamics|mechanics"
-avpkg info datetime
-avpkg search numeric
-avpkg add package [tag]
+  avpkg molecular
+  avpkg "thermodynamics|mechanics" # look for either string
+  avpkg weather --verbose
+  avpkg "date|time"
+
+  avpkg M_color --toml
+  avpkg --toml datetime v1.7.0
+
+  avpkg     # list all package descriptions
+  avpkg -V  # describe all packages in detail
 ```
